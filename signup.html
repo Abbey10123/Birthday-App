@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>User Form</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f3f4f6;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      margin: 0;
+      background-image: url("https://i.imgur.com/sMvdOh8.jpeg");
+      background-repeat: no-repeat; 
+      background-size: cover; 
+      background-position: center;
+    }
+
+    .form-container {
+      background-color: white;
+      padding: 2rem;
+      border-radius: 1rem;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+      width: 100%;
+      max-width: 400px;
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 1.5rem;
+      font-size: 1.5rem;
+      color: #111827;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+      color: #374151;
+    }
+
+    input {
+      width: 100%;
+      padding: 0.6rem;
+      margin-bottom: 1rem;
+      border: 1px solid #d1d5db;
+      border-radius: 0.5rem;
+      font-size: 1rem;
+      outline: none;
+    }
+
+    input:focus {
+      border-color: #2563eb;
+      box-shadow: 0 0 0 1px #2563eb;
+    }
+
+    button {
+      width: 100%;
+      background-color: #2563eb;
+      color: white;
+      padding: 0.75rem;
+      border: none;
+      border-radius: 0.5rem;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #1e40af;
+    }
+  </style>
+</head>
+<body>
+    <form id="form" class="form-container">
+      <h2>Join us to get Birthday Wishes</h2>
+  
+      <label for="username">Username</label>
+      <input type="text" id="username" name="username" required />
+  
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email" required />
+  
+      <label for="dob">Date of Birth</label>
+      <input type="date" id="dob" name="dob" required />
+  
+      <button type="submit">Join</button>
+    </form>
+    <script>
+        const form = document.getElementById("form");
+    
+        form.addEventListener("submit", async (e) => {
+          e.preventDefault();
+    
+          const username = document.getElementById("username").value.trim(); 
+          const email = document.getElementById("email").value.trim();
+          const dob = document.getElementById("dob").value;
+    
+          if (!username || !email || !dob) {
+            alert("Please fill out all fields.");
+            return;
+          }
+    
+          try {
+            const response = await fetch("http://localhost:4040/user/signup", {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({username, email, dob }) ,
+            });
+    
+            const data = await response.json();
+            console.log("Got here");
+    
+            if (response.ok) {
+              alert("User submitted successfully!");
+              form.reset();
+             window.location.href = '/bye.html'
+            }
+
+            
+            else {
+              alert("Error: " + (data.message || "Something went wrong."));
+            }
+    
+          } catch (err) {
+            console.error(err);
+            alert("Failed to submit. Please try again.");
+          }
+        });
+      </script>
+  </body>
+</html>
+

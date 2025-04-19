@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Welcome | Birthday Wish App</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #fdfbfb, #ebedee);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      color: #333;
+      background-image: url("https://i.imgur.com/dPo3aAV.jpeg")
+    }
+
+    .container {
+      text-align: center;
+      background-color: #fff;
+      padding: 40px;
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+      max-width: 500px;
+      width: 90%;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+      color: #5492ea;
+    }
+
+    p {
+      font-size: 1.2rem;
+      margin-bottom: 30px;
+    }
+
+    .btn {
+      background-color: #698cff;
+      color: white;
+      padding: 12px 24px;
+      font-size: 1rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background-color 0.3s ease;
+    }
+
+    .btn:hover {
+      background-color: #1155ba;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Welcome to the Birthday Wish App 🎉</h1>
+    <p>Never miss a friend's birthday again. We'll help you send love and joy right on time!</p>
+    <a href="/user/signup" id="btn" class="btn">Sign Up for Free</a>
+  </div>
+  <script>
+     document.getElementById("btn").addEventListener("click", function() {
+        window.location.href = "http://localhost:4040/user/signup"
+     });
+  </script>
+</body>
+</html>
