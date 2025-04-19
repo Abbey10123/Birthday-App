@@ -100,12 +100,12 @@
           const dob = document.getElementById("dob").value;
     
           if (!username || !email || !dob) {
-            alert("Please fill out all fields.");
+            alert("Please fill out all fields."); 
             return;
           }
     
           try {
-            const response = await fetch("http://localhost:4040/user/signup", {
+            const response = await fetch("http://birthday-app-wzww.onrender.com/user/signup", {
               method: "POST",
               headers: { "Content-Type": "application/json" },
               body: JSON.stringify({username, email, dob }) ,
