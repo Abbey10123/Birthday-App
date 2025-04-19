@@ -4,7 +4,7 @@
 // const defaultClient = elasticemail.ApiClient.instance;
 
 // const apikey = defaultClient.authentications['apikey'];
-// apikey.apiKey = "3D329EF7DA9DC8CD308D9B498895AC8898C771AB1C2A14ECE9A1D364A4D90A8F539AE92CC95233BD519195736B721044";
+// apikey.apiKey = "process.env.Elastic";
 
 // const api = new elasticemail.EmailsApi();
 // console.log("Starting Mail")
