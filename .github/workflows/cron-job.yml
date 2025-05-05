@@ -11,6 +11,12 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
+
+      - name: Set up environment variables from secrets
+        run: |
+          echo "SMTP=${{ secrets.SMTP }}" >> $GITHUB_ENV
+          echo "SERVER=${{ secrets.SERVER }}" >> $GITHUB_ENV
+          echo "GSMTP=${{ secrets.GSMTP }}" >> $GITHUB_ENV  
       
       - name: Trigger Cron Job on App
         run: |
