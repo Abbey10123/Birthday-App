@@ -1,4 +1,5 @@
 const UserModel = require("../models/user.model");
+const mailSender = require("./nodemailer");
 const reSender = require("./resend");
 
 
@@ -19,7 +20,7 @@ const birthdayChecker =  async () => {
         })
         if (birthdayPeople.length > 0){
             birthdayPeople.forEach(user =>{
-                reSender(user)
+                mailSender(user)
             })
             const emails = birthdayPeople.map(u => u.email);
             console.log(emails)
